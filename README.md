@@ -1,7 +1,5 @@
 # 🚀 ECOM - Your Next-Gen Spring Boot E-Commerce Backend 💥
 
-![ECOM Banner](https://raw.githubusercontent.com/jeet7122/ECOM/master/banner.png)
-
 ---
 
 ### Hey there! 👋 Welcome to **ECOM** — a **sleek**, **powerful**, and **scalable** Spring Boot backend for your online store dreams! 🛒✨
