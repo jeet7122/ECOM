@@ -18,14 +18,21 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
     private BigDecimal total;
+
     @Enumerated(EnumType.STRING)
     private OrderStatus status =  OrderStatus.PENDING;
+
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", orphanRemoval = true)
     private List<OrderItem> items = new ArrayList<>();
+
+
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp

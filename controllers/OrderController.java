@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Optional;
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/orders")
@@ -20,8 +18,9 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<Optional<OrderResponse>> createOrder(@RequestHeader("X-User-ID") String userId){
-        Optional<OrderResponse> order = orderService.createOrder(userId);
-        return new ResponseEntity<>(order, HttpStatus.OK);
+    public ResponseEntity<OrderResponse> createOrder(@RequestHeader("X-User-ID") String userId){
+        return orderService.createOrder(userId)
+                .map(res -> new ResponseEntity<>(res, HttpStatus.OK))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }
